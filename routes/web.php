@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\ArticlesController;
 use App\Http\Controllers\Admin\CategoriesController;
+use App\Http\Controllers\Admin\ProjectsController;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
@@ -37,4 +38,5 @@ Route::middleware(['auth', 'verified'])
 
         Route::resource('categories',CategoriesController::class);
         Route::resource('articles',ArticlesController::class);
+        Route::resource('projects',ProjectsController::class);
     });
