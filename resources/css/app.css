@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+[x-cloak] {
+    display: none;
+}
+
+table {
+    width: 100%;
+}
+
+table th,
+table td {
+    padding: 16px;
+}
+
+table td {
+    border-bottom: thin solid rgba(0, 0, 0, 0.12);
+}
+
+table th {
+    border-bottom: thin solid rgba(0, 0, 0, 0.32);
+}
+
+table tbody tr:last-child td {
+    border-bottom: transparent;
+}
