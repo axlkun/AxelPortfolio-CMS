@@ -59,7 +59,7 @@ class ProjectsController extends Controller
         $data = $request->validate([
             'image' => ['nullable','image','max:3000'],
             'title' => ['required','string','max:255'],
-            'slug' => ['required','string', Rule::unique(Project::class)],
+            'slug' => ['required','string', Rule::unique(Project::class)->ignore($project->id)], //ignorar registro actual
             'technologies' => ['required','string','max:500'],
             'company' => ['required','string','max:100'],
             'repo_link' => ['nullable','url'],
@@ -84,6 +84,7 @@ class ProjectsController extends Controller
 
     public function destroy(Project $project){
         $project->deletePhoto();
+        $project->delete();
 
         return redirect()->route('projects.index')
         ->with('success','Project deleted successfully');
