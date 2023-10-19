@@ -22,10 +22,14 @@ const props = defineProps({
 
 const form = useForm({
     "_method": props.edit ? 'PUT' : "",
+    image: null,
     title: "",
     slug: "",
-    description: "",
-    image: null
+    technologies: "",
+    company: "",
+    repo_link: "",
+    website_link: "",
+    description: ""
 });
 
 let imageUrl = ref("");
@@ -51,6 +55,10 @@ onMounted(() => {
     if (props.edit) {
         form.title = props.project.data.title;
         form.slug = props.project.data.slug;
+        form.technologies = props.project.data.technologies;
+        form.company = props.project.data.company;
+        form.repo_link = props.project.data.repo_link;
+        form.website_link = props.project.data.website_link;
         form.description = props.project.data.description
     }
 
@@ -91,9 +99,37 @@ const saveProject = () => {
 
                     <div class="mt-4">
                         <InputLabel for="slug" value="Slug" />
-                        <TextInput id="slug" v-model="form.slug" type="text" class="mt-1 block w-full" required
+                        <TextInput disabled="disabled" id="slug" v-model="form.slug" type="text" class="mt-1 block w-full" required
                             autocomplete="slug" />
                         <InputError :message="form.errors.slug" class="mt-2" />
+                    </div>
+
+                    <div class="mt-4">
+                        <InputLabel for="technologies" value="Technologies" />
+                        <TextInput id="technologies" v-model="form.technologies" type="text" class="mt-1 block w-full" required
+                            autocomplete="technologies" />
+                        <InputError :message="form.errors.technologies" class="mt-2" />
+                    </div>
+
+                    <div class="mt-4">
+                        <InputLabel for="company" value="For Company" />
+                        <TextInput id="company" v-model="form.company" type="text" class="mt-1 block w-full" required
+                            autocomplete="company" />
+                        <InputError :message="form.errors.company" class="mt-2" />
+                    </div>
+
+                    <div class="mt-4">
+                        <InputLabel for="repo_link" value="Source code" />
+                        <TextInput id="repo_link" v-model="form.repo_link" type="text" class="mt-1 block w-full" required
+                            autocomplete="repo_link" />
+                        <InputError :message="form.errors.repo_link" class="mt-2" />
+                    </div>
+
+                    <div class="mt-4">
+                        <InputLabel for="website_link" value="Live website" />
+                        <TextInput id="website_link" v-model="form.website_link" type="text" class="mt-1 block w-full" required
+                            autocomplete="website_link" />
+                        <InputError :message="form.errors.website_link" class="mt-2" />
                     </div>
 
                     <div class="mt-4 col-span-6 sm:col-span-6">
