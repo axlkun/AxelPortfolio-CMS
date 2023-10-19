@@ -42,7 +42,7 @@ const selectNewPhoto = () => {
 
 <template>
     <div>
-        <input ref="photoInput" type="file" class="hidden" @change="updatePhotoPreview">
+        <input ref="photoInput" type="file" class="hidden" @change="updatePhotoPreview" accept="image/*">
 
         <InputLabel for="photo" :value="label" />
 
