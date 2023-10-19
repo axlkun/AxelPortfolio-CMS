@@ -111,7 +111,7 @@ const saveArticle = () => {
 
                     <div class="mt-4">
                         <InputLabel for="slug" value="Slug" />
-                        <TextInput id="slug" v-model="form.slug" type="text" class="mt-1 block w-full" required
+                        <TextInput disabled="disabled" id="slug" v-model="form.slug" type="text" class="mt-1 block w-full" required
                             autocomplete="slug" />
                         <InputError :message="form.errors.slug" class="mt-2" />
                     </div>
