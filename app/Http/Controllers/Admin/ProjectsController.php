@@ -16,4 +16,11 @@ class ProjectsController extends Controller
             'projects' => ProjectResource::collection(Project::latest()->simplePaginate(10))
         ]);
     }
+
+    public function create(){
+        return Inertia::render('Projects/Create',[
+            'edit' => false,
+            'project' => new ProjectResource(new Project())
+        ]);
+    }
 }
