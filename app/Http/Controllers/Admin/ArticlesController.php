@@ -86,7 +86,7 @@ class ArticlesController extends Controller
 
     public function destroy(Article $article){
 
-        // $article->deleteImage();
+        $article->deletePhoto();
         $article->delete();
 
         return redirect()->route('articles.index')
