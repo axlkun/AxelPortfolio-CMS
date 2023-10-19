@@ -13,7 +13,7 @@ const props = defineProps({
 });
 
 const headers = [
-    { name: "Name" },
+    { name: "Title" },
     { name: "Client" },
     { name: "Created date" },
     {
@@ -42,14 +42,14 @@ const breadcrumbs = [
             <Card class="mt-4">
                 <AppTable :headers="headers" :items="projects">
                     <tr v-for="project in projects.data" :key="project.id">
-                        <td>{{ project.name }}</td>
+                        <td>{{ project.title }}</td>
                         <td>{{ project.company }}</td>
                         <td>{{ project.created_at_formated }}</td>
                         <td>
                             <div class="flex items-center justify-end space-x-2">
                                 <EditBtn :url="route('projects.edit', { project: project.id })"></EditBtn>
 
-                                <DeleteBtn :url="route('project.destroy', { project: project.id })"
+                                <DeleteBtn :url="route('projects.destroy', { project: project.id })"
                                     module-name="project"></DeleteBtn>
                             </div>
                         </td>
