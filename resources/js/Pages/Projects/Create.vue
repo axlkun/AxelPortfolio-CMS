@@ -49,20 +49,20 @@ watch(
 
 onMounted(() => {
     if (props.edit) {
-        form.title = props.article.data.title;
-        form.slug = props.article.data.slug;
-        form.description = props.article.data.description
+        form.title = props.project.data.title;
+        form.slug = props.project.data.slug;
+        form.description = props.project.data.description
     }
 
-    imageUrl.value = props.article.data.imageUrl;
+    imageUrl.value = props.project.data.imageUrl;
 
 });
 
-const saveArticle = () => {
+const saveProject = () => {
 
     props.edit
-        ? form.post(route('articles.update', { id: props.article.data.id }))
-        : form.post(route('articles.store'));
+        ? form.post(route('projects.update', { id: props.project.data.id }))
+        : form.post(route('projects.store'));
 };
 </script>
 
@@ -74,7 +74,7 @@ const saveArticle = () => {
 
         <Container>
             <Card>
-                <form @submit.prevent="saveArticle" enctype="multipart/form-data">
+                <form @submit.prevent="saveProject" enctype="multipart/form-data">
                     <div class="col-span-6 sm:col-span-4">
 
                         <AppImage :imageUrl="imageUrl" label="Image" v-model="form.image" :errorMessage="form.errors.image">
