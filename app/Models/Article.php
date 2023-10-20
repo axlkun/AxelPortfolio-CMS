@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
-use App\Contracts\ImageableContract as ContractsImageableContract;
 use App\Traits\Imageable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use App\Contracts\ImageableContract as ContractsImageableContract;
 
 class Article extends Model implements ContractsImageableContract
 {
@@ -21,6 +22,10 @@ class Article extends Model implements ContractsImageableContract
 
     public function category(): BelongsTo{
         return $this->belongsTo(Category::class,'category_id')->withDefault();
+    }
+
+    public function categories(): BelongsToMany {
+        return $this->belongsToMany(Category::class);
     }
 
 }
