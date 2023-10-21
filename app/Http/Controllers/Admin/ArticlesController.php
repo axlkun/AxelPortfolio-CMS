@@ -58,6 +58,9 @@ class ArticlesController extends Controller
 
     public function edit(Article $article)
     {
+        // Carga las categorías asociadas al artículo
+        $article->load('categories');
+
         return Inertia::render('Articles/Create', [
             "edit" => true,
             "article" => new ArticleResource($article),
