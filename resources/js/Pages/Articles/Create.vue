@@ -30,7 +30,7 @@ const props = defineProps({
 
 const form = useForm({
     "_method": props.edit ? 'PUT' : "",
-    category_id: "",
+    categories: Array,
     title: "",
     slug: "",
     description: "",
@@ -58,7 +58,7 @@ watch(
 
 onMounted(() => {
     if (props.edit) {
-        form.category_id = props.article.data.category_id;
+        form.categories = props.article.data.categories.split(',');
         form.title = props.article.data.title;
         form.slug = props.article.data.slug;
         form.description = props.article.data.description
@@ -94,7 +94,7 @@ const saveArticle = () => {
 
                     <div class="mt-4">
                         <InputLabel for="category" value="Category" />
-                        <select name="category" id="category" class="block w-full form-input" v-model="form.category_id">
+                        <select name="category" id="category" class="block w-full form-input" v-model="form.categories" multiple>
                             <option value="" disabled selected>Select a category</option>
                             <option v-for="category in categories.data" :key="category.id" :value="category.id">{{
                                 category.name }}</option>
