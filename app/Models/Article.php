@@ -20,10 +20,6 @@ class Article extends Model implements ContractsImageableContract
         return "public/articles";
     }
 
-    public function category(): BelongsTo{
-        return $this->belongsTo(Category::class,'category_id')->withDefault();
-    }
-
     public function categories(): BelongsToMany {
         return $this->belongsToMany(Category::class);
     }
