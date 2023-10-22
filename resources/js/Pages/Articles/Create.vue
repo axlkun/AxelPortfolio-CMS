@@ -30,7 +30,7 @@ const props = defineProps({
 
 const form = useForm({
     "_method": props.edit ? 'PUT' : "",
-    categories: Array,
+    categories: [],
     title: "",
     slug: "",
     description: "",
@@ -58,7 +58,7 @@ watch(
 
 onMounted(() => {
     if (props.edit) {
-        form.categories = props.article.data.categories.split(',');
+        form.categories = props.article.data.categories.map(category => category.id);
         form.title = props.article.data.title;
         form.slug = props.article.data.slug;
         form.description = props.article.data.description
