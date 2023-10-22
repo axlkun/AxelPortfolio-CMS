@@ -16,7 +16,7 @@ class ArticlesController extends Controller
 {
     public function index()
     {
-        $articles = Article::with(['category:id,name'])->latest()->simplePaginate(10);
+        $articles = Article::latest()->simplePaginate(10);
 
         return Inertia::render('Articles/Index', [
             'articles' => ArticleResource::collection($articles)
@@ -93,7 +93,7 @@ class ArticlesController extends Controller
 
         // Asocia las categorías al artículo
         $article->categories()->sync($data['categories']);
-        
+
         return redirect()->route('articles.index')
             ->with('success', 'Article updated successfully');
     }
@@ -102,6 +102,8 @@ class ArticlesController extends Controller
     {
 
         $article->deletePhoto();
+        // Elimina las relaciones con las categorías sin eliminar las categorías
+        $article->categories()->detach();
         $article->delete();
 
         return redirect()->route('articles.index')
