@@ -21,7 +21,6 @@ class ArticleFactory extends Factory
         $title = $this->faker->sentence;
 
         return [
-            'category_id' => Category::factory(),
             'title' => $title,
             'slug' => Str::slug($title),
             'image' => '',
