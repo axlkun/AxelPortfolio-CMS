@@ -72,7 +72,7 @@ class ArticlesController extends Controller
     {
 
         $data = $request->validate([
-            'category_id' => ['required', Rule::exists(Category::class, 'id')],
+            'categories' => ['required', 'array'],
             'title' => ['required', 'string', 'max:255'],
             'slug' => ['required', 'string', Rule::unique(Article::class)->ignore($article->id)],
             'image' => ['nullable', 'image', 'max:3000'],
@@ -90,6 +90,10 @@ class ArticlesController extends Controller
         }
 
         $article->update($data);
+
+        // Asocia las categorías al artículo
+        $article->categories()->sync($data['categories']);
+        
         return redirect()->route('articles.index')
             ->with('success', 'Article updated successfully');
     }
