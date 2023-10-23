@@ -66,7 +66,7 @@ class CategoriesController extends Controller
         // Verifica si la categoría tiene asociados artículos
         if ($category->articles->count() > 0) {
             return redirect()->route('categories.index')
-                ->with('error', 'Category cannot be deleted because it is associated with one or more articles.');
+            ->with('failure', 'Category cannot be deleted because it is associated with one or more articles.');
         }
 
 
