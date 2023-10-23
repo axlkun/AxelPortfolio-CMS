@@ -1,6 +1,6 @@
 <script setup>
 import { usePage } from '@inertiajs/vue3';
-import { onMounted } from 'vue';
+import { onMounted,watch } from 'vue';
 
 const page = usePage();
 
@@ -9,18 +9,25 @@ const hideFlashMessage = () => {
     page.props.flash.failure = "";
 };
 
-// llama a la función para ocultar automáticamente el mensaje después de 5 segundos
+//llama a la función para ocultar automáticamente el mensaje después de 5 segundos
 const autoHideFlashMessage = () => {
     if (page.props.flash.success || page.props.flash.failure) {
         setTimeout(() => {
             hideFlashMessage();
-        }, 5000); // 5000 milisegundos (5 segundos)
+        }, 5000); 
     }
 };
 
-// Llama a la función de ocultar automáticamente cuando el componente se monta
+//Llama a la función de ocultar automáticamente cuando el componente se monta
 onMounted(() => {
     autoHideFlashMessage();
+});
+
+// Observa cambios en las props flash.success y flash.failure
+watch([() => page.props.flash.success, () => page.props.flash.failure], ([success, failure]) => {
+    if (success || failure) {
+        autoHideFlashMessage();
+    }
 });
 
 </script>
