@@ -74,6 +74,16 @@ const saveArticle = () => {
         ? form.post(route('articles.update', { id: props.article.data.id }))
         : form.post(route('articles.store'));
 };
+
+const selectedCities = ref();
+const cities = ref([
+    { name: 'New York', code: 'NY' },
+    { name: 'Rome', code: 'RM' },
+    { name: 'London', code: 'LDN' },
+    { name: 'Istanbul', code: 'IST' },
+    { name: 'Paris', code: 'PRS' }
+]);
+
 </script>
 
 <template>
@@ -101,6 +111,11 @@ const saveArticle = () => {
                                 category.name }}</option>
                         </select>
                         <InputError :message="form.errors.category" class="mt-2" />
+                    </div>
+
+                    <div class="mt-4">
+                        <MultiSelect v-model="selectedCities" display="chip" :options="cities" optionLabel="name" placeholder="Select Cities"
+            :maxSelectedLabels="3" class="w-full md:w-20rem" />
                     </div>
 
                     <div class="mt-4">
