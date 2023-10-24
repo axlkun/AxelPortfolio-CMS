@@ -94,7 +94,8 @@ const saveArticle = () => {
 
                     <div class="mt-4">
                         <InputLabel for="category" value="Category" />
-                        <select name="category" id="category" class="block w-full form-input" v-model="form.categories" multiple>
+                        <select name="category" id="category" class="block w-full form-input" v-model="form.categories"
+                            multiple>
                             <option value="" disabled selected>Select a category</option>
                             <option v-for="category in categories.data" :key="category.id" :value="category.id">{{
                                 category.name }}</option>
@@ -111,8 +112,8 @@ const saveArticle = () => {
 
                     <div class="mt-4">
                         <InputLabel for="slug" value="Slug" />
-                        <TextInput disabled="disabled" id="slug" v-model="form.slug" type="text" class="mt-1 block w-full" required
-                            autocomplete="slug" />
+                        <TextInput disabled="disabled" id="slug" v-model="form.slug" type="text" class="mt-1 block w-full"
+                            required autocomplete="slug" />
                         <InputError :message="form.errors.slug" class="mt-2" />
                     </div>
 
