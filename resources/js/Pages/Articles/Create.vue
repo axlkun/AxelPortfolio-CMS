@@ -58,6 +58,9 @@ watch(
 
 onMounted(() => {
     if (props.edit) {
+        // const articleCategoryNames = props.article.data.categories.map(category => category.id);
+
+        // form.categories = props.categories.data.filter(category => articleCategoryNames.includes(category.id));
         form.categories = props.article.data.categories.map(category => category.id);
         form.title = props.article.data.title;
         form.slug = props.article.data.slug;
@@ -74,15 +77,6 @@ const saveArticle = () => {
         ? form.post(route('articles.update', { id: props.article.data.id }))
         : form.post(route('articles.store'));
 };
-
-const selectedCities = ref();
-const cities = ref([
-    { name: 'New York', code: 'NY' },
-    { name: 'Rome', code: 'RM' },
-    { name: 'London', code: 'LDN' },
-    { name: 'Istanbul', code: 'IST' },
-    { name: 'Paris', code: 'PRS' }
-]);
 
 </script>
 
@@ -102,7 +96,7 @@ const cities = ref([
 
                     </div>
 
-                    <div class="mt-4">
+                    <!-- <div class="mt-4">
                         <InputLabel for="category" value="Category" />
                         <select name="category" id="category" class="block w-full form-input" v-model="form.categories"
                             multiple>
@@ -111,11 +105,13 @@ const cities = ref([
                                 category.name }}</option>
                         </select>
                         <InputError :message="form.errors.category" class="mt-2" />
-                    </div>
+                    </div> -->
 
-                    <div class="mt-4">
-                        <MultiSelect v-model="selectedCities" display="chip" :options="cities" optionLabel="name" placeholder="Select Cities"
-            :maxSelectedLabels="3" class="w-full md:w-20rem" />
+                    <div class="mt-4" style="border: 1px solid grey;">
+                        <InputLabel for="category" value="Category" />
+                        <MultiSelect v-model="form.categories" display="chip" :options="categories.data" optionLabel="name" optionValue="id"
+                            placeholder="Select categories" :maxSelectedLabels="5" class="w-full md:w-20rem" />
+                        <InputError :message="form.errors.category" class="mt-2" />
                     </div>
 
                     <div class="mt-4">
