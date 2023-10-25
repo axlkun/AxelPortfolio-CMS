@@ -8,11 +8,10 @@ import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 import CKEditor from '@ckeditor/ckeditor5-vue';
 
 import PrimeVue from 'primevue/config';
-// import 'primevue/resources/themes/lara-light-teal/theme.css';
 import 'primevue/resources/themes/md-light-indigo/theme.css';
-
 import 'primevue/resources/primevue.min.css';
 import MultiSelect from 'primevue/multiselect';
+import Chips from 'primevue/chips';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 // const appName = 'AxelPortfolio';
@@ -27,6 +26,7 @@ createInertiaApp({
             .use(CKEditor)
             .use(PrimeVue)
             .component('MultiSelect',MultiSelect)
+            .component('Chips',Chips)
             .mount(el);
     },
     progress: {
