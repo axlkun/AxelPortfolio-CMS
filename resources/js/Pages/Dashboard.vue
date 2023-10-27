@@ -2,6 +2,15 @@
 import AppLayout from '@/Layouts/AppLayout.vue';
 import BreadCroumbs from '@/OwnComponents/BreadCroumbs.vue';
 
+const props = defineProps({
+    projectsCount: Number,
+    categoriesCount: Number,
+    articlesCount: Number,
+    latestProject: String,
+    latestCategory: String,
+    latestArticle: String,
+});
+
 const breadcrumbs = [
     {
         label: "Dashboard"
@@ -30,10 +39,10 @@ const breadcrumbs = [
                             <h5 class="mb-2 mt-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
                                 Projects</h5>
 
-                            <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">8 active projects</p>
+                            <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">{{ projectsCount }} active projects</p>
 
                             <p class="inline-flex items-center text-blue-600">
-                                Última actualización: 18/10/2022
+                                Last update: {{ latestProject }}
                             </p>
                         </div>
                         <div
@@ -47,10 +56,10 @@ const breadcrumbs = [
                             <h5 class="mb-2 mt-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
                                 Articles</h5>
 
-                            <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">17 active articles</p>
+                            <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">{{ articlesCount }} active articles</p>
 
                             <p class="inline-flex items-center text-blue-600">
-                                Última actualización: 18/10/2022
+                                Last update: {{ latestArticle }}
                             </p>
                         </div>
                         <div
@@ -64,10 +73,10 @@ const breadcrumbs = [
                             <h5 class="mb-3 mt-3 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
                                 Categories</h5>
 
-                            <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">21 active categories</p>
+                            <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">{{ categoriesCount }} active categories</p>
 
                             <p class="inline-flex items-center text-blue-600">
-                                Última actualización: 18/10/2022
+                                Last update: {{ latestCategory }}
                             </p>
                         </div>
                     </div>
