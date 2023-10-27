@@ -33,6 +33,7 @@ const form = useForm({
 });
 
 let imageUrl = ref("");
+const value = ref();
 
 const breadcrumbs = [
     {
@@ -104,10 +105,16 @@ const saveProject = () => {
                         <InputError :message="form.errors.slug" class="mt-2" />
                     </div>
 
-                    <div class="mt-4">
+                    <!-- <div class="mt-4">
                         <InputLabel for="technologies" value="Technologies" />
                         <TextInput id="technologies" v-model="form.technologies" type="text" class="mt-1 block w-full" required
                             autocomplete="technologies" />
+                        <InputError :message="form.errors.technologies" class="mt-2" />
+                    </div> -->
+
+                    <div class="mt-4 card p-fluid">
+                        <InputLabel for="technologies" value="Technologies" />
+                        <Chips v-model="form.technologies" separator=","  />
                         <InputError :message="form.errors.technologies" class="mt-2" />
                     </div>
 
