@@ -15,7 +15,7 @@ const props = defineProps({
 
 const headers = [
     { name: "Title" },
-    { name: "Slug" },
+    { name: "Categories" },
     { name: "Created date" },
     {
         name: "Actions",
@@ -28,6 +28,10 @@ const breadcrumbs = [
         label: "Articles"
     }
 ];
+
+const formatCategories = (categories) => {
+    return categories.map(category => category.name).join(', ');
+}
 
 </script>
 
@@ -44,7 +48,7 @@ const breadcrumbs = [
                 <AppTable :headers="headers" :items="articles">
                     <tr v-for="article in articles.data" :key="article.id">
                         <td>{{ article.title }}</td>
-                        <td>{{article.slug}}</td>
+                        <td>{{formatCategories(article.categories)}}</td>
                         <td>{{ article.created_at_formated }}</td>
                         <td>
                             <div class="flex items-center justify-end space-x-2">
