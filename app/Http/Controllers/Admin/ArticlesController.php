@@ -16,7 +16,7 @@ class ArticlesController extends Controller
 {
     public function index()
     {
-        $articles = Article::latest()->simplePaginate(10);
+        $articles = Article::with('categories')->latest()->simplePaginate(10);
 
         return Inertia::render('Articles/Index', [
             'articles' => ArticleResource::collection($articles)
