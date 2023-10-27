@@ -31,7 +31,7 @@ class ProjectsController extends Controller
             'image' => ['nullable','image','max:3000'],
             'title' => ['required','string','max:255'],
             'slug' => ['required','string', Rule::unique(Project::class)],
-            'technologies' => ['required','string','max:500'],
+            'technologies' => ['required','array'],
             'company' => ['required','string','max:100'],
             'repo_link' => ['nullable','url'],
             'website_link' => ['nullable','url'],
@@ -41,6 +41,8 @@ class ProjectsController extends Controller
         $data['image'] = $uploadFile->setFile($request->file('image'))
         ->setUploadPath((new Project())->uploadFolder())
         ->execute();
+
+        $data['technologies'] = json_encode($request->input('technologies'));
 
         Project::create($data);
 
@@ -60,7 +62,7 @@ class ProjectsController extends Controller
             'image' => ['nullable','image','max:3000'],
             'title' => ['required','string','max:255'],
             'slug' => ['required','string', Rule::unique(Project::class)->ignore($project->id)], //ignorar registro actual
-            'technologies' => ['required','string','max:500'],
+            'technologies' => ['required','array'],
             'company' => ['required','string','max:100'],
             'repo_link' => ['nullable','url'],
             'website_link' => ['nullable','url'],
@@ -68,6 +70,7 @@ class ProjectsController extends Controller
         ]);
 
         $data['image'] = $project->image;
+        $data['technologies'] = json_encode($request->input('technologies'));
 
         if($request->file('image')){
             $project->deletePhoto();
