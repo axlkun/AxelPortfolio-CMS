@@ -41,7 +41,7 @@ const breadcrumbs = [
 
                             <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">{{ projectsCount }} active projects</p>
 
-                            <p class="inline-flex items-center text-blue-600">
+                            <p class="inline-flex items-center text-black-600">
                                 Last update: {{ latestProject }}
                             </p>
                         </div>
@@ -58,7 +58,7 @@ const breadcrumbs = [
 
                             <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">{{ articlesCount }} active articles</p>
 
-                            <p class="inline-flex items-center text-blue-600">
+                            <p class="inline-flex items-center text-black-600">
                                 Last update: {{ latestArticle }}
                             </p>
                         </div>
@@ -75,7 +75,7 @@ const breadcrumbs = [
 
                             <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">{{ categoriesCount }} active categories</p>
 
-                            <p class="inline-flex items-center text-blue-600">
+                            <p class="inline-flex items-center text-black-600">
                                 Last update: {{ latestCategory }}
                             </p>
                         </div>
