@@ -60,9 +60,6 @@ watch(
 
 onMounted(() => {
     if (props.edit) {
-        // const articleCategoryNames = props.article.data.categories.map(category => category.id);
-
-        // form.categories = props.categories.data.filter(category => articleCategoryNames.includes(category.id));
         form.categories = props.article.data.categories.map(category => category.id);
         form.title = props.article.data.title;
         form.slug = props.article.data.slug;
