@@ -15,7 +15,7 @@ defineEmits(['update:modelValue']);
      name="" 
      id="" 
      cols="30" 
-     rows="10" 
+     rows="3" 
      style="resize: none;"
      :value="modelValue"
      @input="$emit('update:modelValue', $event.target.value)">
