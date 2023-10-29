@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->string('image');
+            $table->string('summary');
             $table->longText('description');
             $table->string('technologies');
             $table->string('company');
