@@ -18,9 +18,9 @@ class DashboardController extends Controller
         $categoriesCount = Category::count();
         $articlesCount = Article::count();
 
-        $latestProject = Project::latest('created_at')->value('created_at')->diffForHumans();
-        $latestCategory = Category::latest('created_at')->value('created_at')->diffForHumans();
-        $latestArticle = Article::latest('created_at')->value('created_at')->diffForHumans();
+        $latestProject = Project::latest('created_at')->value('created_at') ? Project::latest('created_at')->value('created_at')->diffForHumans() : 'Empty data';
+        $latestCategory = Category::latest('created_at')->value('created_at') ? Category::latest('created_at')->value('created_at')->diffForHumans() : 'Empty data';
+        $latestArticle = Article::latest('created_at')->value('created_at') ? Article::latest('created_at')->value('created_at')->diffForHumans() : 'Empty data';
 
         return Inertia::render('Dashboard', [
             'projectsCount' => $projectsCount,
