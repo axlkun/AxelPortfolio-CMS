@@ -20,8 +20,8 @@ return new class extends Migration
             $table->longText('description');
             $table->string('technologies');
             $table->string('company');
-            $table->string('website_link');
-            $table->string('repo_link');
+            $table->string('website_link')->nullable();
+            $table->string('repo_link')->nullable(); 
             $table->timestamps();
         });
     }
