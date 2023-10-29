@@ -22,6 +22,7 @@ class ArticleResource extends JsonResource
             'title' => $this->title,
             'categories' => CategoryResource::collection($this->whenLoaded('categories')),
             'slug' => $this->when($this->slug,$this->slug),
+            'summary' => $this->when($this->summary,$this->summary),
             'description' => $this->when($this->description,$this->description),
             'small_description' => $this->when($this->description,Str::limit(strip_tags($this->description), 80)),
             'created_at_formated' => $this->when($this->created_at, function(){

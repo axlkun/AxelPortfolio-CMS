@@ -19,6 +19,7 @@ class ProjectResource extends JsonResource
             'title' => $this->when($this->title,$this->title),
             'slug' => $this->when($this->slug,$this->slug),
             'imageUrl' => $this->getImageUrl(),
+            'summary' => $this->when($this->summary,$this->summary), 
             'description' => $this->when($this->description,$this->description), 
             'technologies' => $this->when($this->technologies,json_decode($this->technologies)), 
             'company' => $this->when($this->company,$this->company), 
