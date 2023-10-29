@@ -106,7 +106,7 @@ onMounted(() => {
                             <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Contacto Directo</h2>
 
                             <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                Manténgase en contacto de manera directa. En la sección de contacto, los datos se envían directamente a su correo electrónico. Facilite la comunicación con sus visitantes y responda a sus consultas sin problemas.
+                                Configura un correo electrónico de contacto y recibe mensajes de tus visitantes de manera instantánea. Con nuestra sección de contacto, establece una comunicación directa y efectiva..
                             </p>
                         </div>
                     </div>
