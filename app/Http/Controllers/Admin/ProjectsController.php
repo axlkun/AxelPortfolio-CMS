@@ -35,7 +35,8 @@ class ProjectsController extends Controller
             'company' => ['required','string','max:100'],
             'repo_link' => ['nullable','url'],
             'website_link' => ['nullable','url'],
-            'description' => ['required','string']
+            'summary' => ['required','string','max:255'],
+            'description' => ['required','string'],
         ]);
 
         $data['image'] = $uploadFile->setFile($request->file('image'))
@@ -66,7 +67,8 @@ class ProjectsController extends Controller
             'company' => ['required','string','max:100'],
             'repo_link' => ['nullable','url'],
             'website_link' => ['nullable','url'],
-            'description' => ['required','string'],
+            'summary' => ['required','string','max:255'],
+            'description' => ['required','string']
         ]);
 
         $data['image'] = $project->image;
