@@ -14,6 +14,7 @@ import Card from '@/OwnComponents/Card.vue';
 import BreadCroumbs from '@/OwnComponents/BreadCroumbs.vue';
 import AppImage from '@/OwnComponents/Image.vue';
 import AppCkeditor from '@/OwnComponents/Ckeditor.vue';
+import AppTexArea from '@/OwnComponents/TextArea.vue';
 
 const props = defineProps({
     edit: Boolean,
@@ -33,6 +34,7 @@ const form = useForm({
     categories: [],
     title: "",
     slug: "",
+    summary: "",
     description: "",
     image: null
 });
@@ -64,7 +66,8 @@ onMounted(() => {
         form.categories = props.article.data.categories.map(category => category.id);
         form.title = props.article.data.title;
         form.slug = props.article.data.slug;
-        form.description = props.article.data.description
+        form.summary = props.article.data.summary;
+        form.description = props.article.data.description;
     }
 
     imageUrl.value = props.article.data.imageUrl;
@@ -96,21 +99,11 @@ const saveArticle = () => {
 
                     </div>
 
-                    <!-- <div class="mt-4">
-                        <InputLabel for="category" value="Category" />
-                        <select name="category" id="category" class="block w-full form-input" v-model="form.categories"
-                            multiple>
-                            <option value="" disabled selected>Select a category</option>
-                            <option v-for="category in categories.data" :key="category.id" :value="category.id">{{
-                                category.name }}</option>
-                        </select>
-                        <InputError :message="form.errors.category" class="mt-2" />
-                    </div> -->
-
                     <div class="mt-4" style="border: 1px solid grey;">
                         <InputLabel for="category" value="Category" />
-                        <MultiSelect v-model="form.categories" display="chip" :options="categories.data" optionLabel="name" optionValue="id"
-                            placeholder="Select categories" :maxSelectedLabels="5" class="w-full md:w-20rem" />
+                        <MultiSelect v-model="form.categories" display="chip" :options="categories.data" optionLabel="name"
+                            optionValue="id" placeholder="Select categories" :maxSelectedLabels="5"
+                            class="w-full md:w-20rem" />
                         <InputError :message="form.errors.category" class="mt-2" />
                     </div>
 
@@ -128,7 +121,15 @@ const saveArticle = () => {
                         <InputError :message="form.errors.slug" class="mt-2" />
                     </div>
 
-                    <div class="mt-4 col-span-6 sm:col-span-6">
+                    <div class="mt-4">
+                        <InputLabel for="summary" value="Summary" />
+
+                        <AppTexArea id="summary" v-model="form.summary" type="text" class="mt-1 block w-full"
+                            required autocomplete="summary"></AppTexArea>
+
+                    </div>
+
+                    <div class="mt-4">
                         <InputLabel for="description" value="Description" />
 
                         <AppCkeditor v-model="form.description"></AppCkeditor>
