@@ -14,6 +14,7 @@ import Card from '@/OwnComponents/Card.vue';
 import BreadCroumbs from '@/OwnComponents/BreadCroumbs.vue';
 import AppImage from '@/OwnComponents/Image.vue';
 import AppCkeditor from '@/OwnComponents/Ckeditor.vue';
+import AppTexArea from '@/OwnComponents/TextArea.vue';
 
 const props = defineProps({
     edit: Boolean,
@@ -29,11 +30,11 @@ const form = useForm({
     company: "",
     repo_link: "",
     website_link: "",
+    summary: "",
     description: ""
 });
 
 let imageUrl = ref("");
-const value = ref();
 
 const breadcrumbs = [
     {
@@ -60,7 +61,8 @@ onMounted(() => {
         form.company = props.project.data.company;
         form.repo_link = props.project.data.repo_link;
         form.website_link = props.project.data.website_link;
-        form.description = props.project.data.description
+        form.summary = props.project.data.summary;
+        form.description = props.project.data.description;
     }
 
     imageUrl.value = props.project.data.imageUrl;
@@ -120,16 +122,24 @@ const saveProject = () => {
 
                     <div class="mt-4">
                         <InputLabel for="repo_link" value="Source code" />
-                        <TextInput id="repo_link" v-model="form.repo_link" type="text" class="mt-1 block w-full" required
+                        <TextInput id="repo_link" v-model="form.repo_link" type="text" class="mt-1 block w-full"
                             autocomplete="repo_link" />
                         <InputError :message="form.errors.repo_link" class="mt-2" />
                     </div>
 
                     <div class="mt-4">
                         <InputLabel for="website_link" value="Live website" />
-                        <TextInput id="website_link" v-model="form.website_link" type="text" class="mt-1 block w-full" required
+                        <TextInput id="website_link" v-model="form.website_link" type="text" class="mt-1 block w-full"
                             autocomplete="website_link" />
                         <InputError :message="form.errors.website_link" class="mt-2" />
+                    </div>
+
+                    <div class="mt-4">
+                        <InputLabel for="summary" value="Summary" />
+
+                        <AppTexArea id="summary" v-model="form.summary" type="text" class="mt-1 block w-full"
+                            required autocomplete="summary"></AppTexArea>
+
                     </div>
 
                     <div class="mt-4 col-span-6 sm:col-span-6">
