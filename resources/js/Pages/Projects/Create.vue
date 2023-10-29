@@ -38,7 +38,7 @@ let imageUrl = ref("");
 
 const breadcrumbs = [
     {
-        label: "Project",
+        label: "Projects",
         url: route('projects.index')
     },
     {
