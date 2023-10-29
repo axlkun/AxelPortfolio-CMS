@@ -140,6 +140,8 @@ const saveProject = () => {
                         <AppTexArea id="summary" v-model="form.summary" type="text" class="mt-1 block w-full"
                             required autocomplete="summary"></AppTexArea>
 
+                            <InputError :message="form.errors.summary" class="mt-2" />
+
                     </div>
 
                     <div class="mt-4 col-span-6 sm:col-span-6">
