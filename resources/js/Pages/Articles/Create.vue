@@ -121,8 +121,10 @@ const saveArticle = () => {
                     <div class="mt-4">
                         <InputLabel for="summary" value="Summary" />
 
-                        <AppTexArea id="summary" v-model="form.summary" type="text" class="mt-1 block w-full"
-                            required autocomplete="summary"></AppTexArea>
+                        <AppTexArea id="summary" v-model="form.summary" type="text" class="mt-1 block w-full" required
+                            autocomplete="summary"></AppTexArea>
+
+                        <InputError :message="form.errors.summary" class="mt-2" />
 
                     </div>
 
