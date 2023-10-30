@@ -10,8 +10,16 @@ use Illuminate\Http\Request;
 class ProjectsController extends Controller
 {
     public function index(Request $request){
-        $projects = Project::latest()->simplePaginate($request->get('limit',4));
 
+        $limit = $request->get('limit',-1);
+        $projects = Project::latest();
+
+        if($limit > 0){
+            $projects = $projects->simplePaginate($limit);
+        }else{
+            $projects = $projects->get();
+        }
+        
         return ProjectResource::collection($projects);
     }
 
