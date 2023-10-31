@@ -9,21 +9,34 @@ use Illuminate\Http\Request;
 
 class ProjectsController extends Controller
 {
-    public function index(Request $request){
+    public function index(Request $request)
+    {
 
-        $limit = $request->get('limit',-1);
+        $limit = $request->get('limit');
         $projects = Project::latest();
 
-        if($limit > 0){
+        if ($limit) {
             $projects = $projects->simplePaginate($limit);
-        }else{
+        } else {
             $projects = $projects->get();
         }
-        
+
         return ProjectResource::collection($projects);
     }
 
-    public function show(Request $request, Project $project){
+    public function show(Request $request, Project $project)
+    {
         return new ProjectResource($project);
+    }
+
+    public function relatedProjects(Request $request, Project $project)
+    {
+        $slug = $project->slug;
+
+        $projects = Project::latest()
+            ->where('slug', '!=', $slug)
+            ->simplePaginate(3);
+
+        return ProjectResource::collection($projects);
     }
 }
