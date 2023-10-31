@@ -12,6 +12,7 @@ Route::get('articles/{article:slug}',[ArticlesController::class,'show']);
 
 Route::get('projects',[ProjectsController::class,'index']);
 Route::get('projects/{project:slug}',[ProjectsController::class,'show']);
+Route::get('related-projects/{project:slug}',[ProjectsController::class,'relatedProjects']);
 
 Route::get('settings',[SettingsController::class,'index']);
 
