@@ -16,7 +16,18 @@ class ArticlesController extends Controller
     }
 
     public function show(Request $request, Article $article){
-        $article->load(['categories:id,name']);
+        $article->load(['categories:name']);
         return new ArticleResource($article);
+    }
+
+    public function relatedArticles(Request $request, Article $article)
+    {
+        $slug = $article->slug;
+
+        $articles = Article::latest()
+            ->where('slug', '!=', $slug)
+            ->simplePaginate(3);
+
+        return ArticleResource::collection($articles);
     }
 }
