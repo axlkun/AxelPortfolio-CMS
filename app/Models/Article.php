@@ -18,6 +18,7 @@ class Article extends Model implements ContractsImageableContract
 
     public function uploadFolder():string{
         return "public/articles";
+        // return "articles";
     }
 
     public function categories(): BelongsToMany {

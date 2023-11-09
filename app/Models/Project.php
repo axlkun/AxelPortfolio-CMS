@@ -16,5 +16,6 @@ class Project extends Model implements ImageableContract
 
     public function uploadFolder():string{
         return "public/projects";
+        // return "projects";
     }
 }

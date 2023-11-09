@@ -46,6 +46,7 @@ class uploadFile{
                 ->append($this->file->getClientOriginalExtension());
 
         $this->file->storeAs($this->uploadPath,$imageName);
+        // $this->file->storeAs($this->uploadPath, $imageName, 'public');
 
         return $imageName;
     }

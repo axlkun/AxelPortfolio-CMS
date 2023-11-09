@@ -14,6 +14,7 @@ trait Imageable{
         return $imageName === null 
             ? "https://ui-avatars.com/api/?name={$column}&color=7F9CF5&background=EBF4FF" 
             : Storage::url("{$this->uploadFolder()}/$imageName");
+            // : asset("{$this->uploadFolder()}/$imageName");
     }
 
     public function deletePhoto(string $column = 'image'): void{
@@ -21,6 +22,11 @@ trait Imageable{
 
         if($imageName !== null){
             Storage::delete("{$this->uploadFolder()}/$imageName");
+            // $filePath = public_path("{$this->uploadFolder()}/$imageName");
+
+            // if (file_exists($filePath)) {
+            //     unlink($filePath);
+            // }
         }
     }
 
