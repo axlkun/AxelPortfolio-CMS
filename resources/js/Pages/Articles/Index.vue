@@ -36,7 +36,7 @@ const formatCategories = (categories) => {
 </script>
 
 <template>
-    <AppLayout title="Dashboard">
+    <AppLayout title="Articles">
         <template #header>
             <BreadCroumbs :items="breadcrumbs"></BreadCroumbs>
         </template>

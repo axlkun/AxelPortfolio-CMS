@@ -56,7 +56,7 @@ const saveCategory = () => {
 </script>
 
 <template>
-    <AppLayout title="Dashboard">
+    <AppLayout title="Category">
         <template #header>
             <BreadCroumbs :items="breadcrumbs"></BreadCroumbs>
         </template>

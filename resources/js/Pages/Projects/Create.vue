@@ -78,7 +78,7 @@ const saveProject = () => {
 </script>
 
 <template>
-    <AppLayout title="Dashboard">
+    <AppLayout title="Project">
         <template #header>
             <BreadCroumbs :items="breadcrumbs"></BreadCroumbs>
         </template>

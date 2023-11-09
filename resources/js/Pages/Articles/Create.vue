@@ -81,7 +81,7 @@ const saveArticle = () => {
 </script>
 
 <template>
-    <AppLayout title="Dashboard">
+    <AppLayout title="Article">
         <template #header>
             <BreadCroumbs :items="breadcrumbs"></BreadCroumbs>
         </template>

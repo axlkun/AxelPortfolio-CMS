@@ -31,7 +31,7 @@ const breadcrumbs = [
 </script>
 
 <template>
-    <AppLayout title="Dashboard">
+    <AppLayout title="Categories">
         <template #header>
             <BreadCroumbs :items="breadcrumbs"></BreadCroumbs>
         </template>
