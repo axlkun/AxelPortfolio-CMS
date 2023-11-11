@@ -5,7 +5,7 @@ namespace App\Actions;
 use Illuminate\Support\Str;
 use Illuminate\Http\UploadedFile;
 
-class uploadFile{
+class UploadFile{
     private $file;
     private $uploadPath;
 
