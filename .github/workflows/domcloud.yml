@@ -15,5 +15,5 @@ jobs:
           webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
           webhook_auth: ${{ secrets.WEBHOOK_AUTH }}
           data: >-
-            {"commands":["git pull","composer install","php artisan migrate","npm
+            {"commands":["git add .","git commit -m 'from github actions'","git pull","composer install","php artisan migrate","npm
             install","npm run build"]}
