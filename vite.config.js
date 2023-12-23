@@ -25,4 +25,10 @@ export default defineConfig({
             exclude: ['ckeditor5-custom-build']
         }
     },
+    resolve: {
+        extensions: ['.js', '.vue', '.json'],
+        alias: {
+            '@': '/resources/js'
+        }
+    }
 });
