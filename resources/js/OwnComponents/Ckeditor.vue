@@ -1,7 +1,7 @@
 <script setup>
 import { ref, watch } from 'vue';
 // import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import ClassicEditor from 'ckeditor5-custom-build';
+import ClassicEditor from 'ckeditor5-custom-build'
 import UploadAdapter from './uploadadapter.js'
 
 const props = defineProps({

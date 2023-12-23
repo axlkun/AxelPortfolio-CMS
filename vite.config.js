@@ -1,9 +1,11 @@
 import { defineConfig } from 'vite';
+import commonjs from 'rollup-plugin-commonjs'
 import laravel from 'laravel-vite-plugin';
 import vue from '@vitejs/plugin-vue';
 
 export default defineConfig({
     plugins: [
+        commonjs(),
         laravel({
             input: 'resources/js/app.js',
             refresh: true,
@@ -17,18 +19,17 @@ export default defineConfig({
             },
         }),
     ],
-    optimizeDeps: {
-        include: ['ckeditor5-custom-build']
-    },
+    
     build: {
         commonjsOptions: {
-            exclude: ['ckeditor5-custom-build']
+            exclude: [
+                  'ckeditor5-custom-build', 
+            ]
         }
-    },
-    resolve: {
-        extensions: ['.js', '.vue', '.json'],
-        alias: {
-            '@': '/resources/js'
-        }
-    }
+     },
+     optimizeDeps: {
+           include: [
+                 'ckeditor5-custom-build',
+           ],
+     }
 });
