@@ -17,12 +17,4 @@ export default defineConfig({
             },
         }),
     ],
-    optimizeDeps: {
-        include: ['ckeditor5-custom-build']
-    },
-    build: {
-        commonjsOptions: {
-            exclude: ['ckeditor5-custom-build']
-        }
-    },
 });
