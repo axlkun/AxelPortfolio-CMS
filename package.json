@@ -21,7 +21,9 @@
     "dependencies": {
         "@ckeditor/ckeditor5-build-classic": "^39.0.2",
         "@ckeditor/ckeditor5-vue": "^5.1.0",
+        "ckeditor5-custom-build": "file:ckeditor5",
         "esbuild": "^0.19.10",
-        "primevue": "^3.37.0"
+        "primevue": "^3.37.0",
+        "vite-plugin-commonjs": "^0.10.1"
     }
 }
