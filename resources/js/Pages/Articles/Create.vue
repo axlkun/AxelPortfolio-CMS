@@ -33,8 +33,11 @@ const form = useForm({
     "_method": props.edit ? 'PUT' : "",
     categories: [],
     title: "",
+    alt_image: null,
     slug: "",
     summary: "",
+    meta_description: null,
+    keywords: null,
     description: "",
     image: null
 });
@@ -62,8 +65,11 @@ onMounted(() => {
     if (props.edit) {
         form.categories = props.article.data.categories.map(category => category.id);
         form.title = props.article.data.title;
+        form.alt_image = props.article.data.alt_image;
         form.slug = props.article.data.slug;
         form.summary = props.article.data.summary;
+        form.meta_description = props.article.data.meta_description;
+        form.keywords = props.article.data.keywords;
         form.description = props.article.data.description;
     }
 
@@ -95,6 +101,13 @@ const saveArticle = () => {
                         </AppImage>
 
                     </div>
+                    
+                    <div class="mt-4">
+                        <InputLabel for="alt_image" value="Alternative Text Image" />
+                        <TextInput id="alt_image" v-model="form.alt_image" type="text" class="mt-1 block w-full"
+                            autocomplete="alt_image" />
+                        <InputError :message="form.errors.alt_image" class="mt-2" />
+                    </div>
 
                     <div class="mt-4" style="border: 1px solid grey;">
                         <InputLabel for="category" value="Category" />
@@ -116,6 +129,26 @@ const saveArticle = () => {
                         <TextInput disabled="disabled" id="slug" v-model="form.slug" type="text" class="mt-1 block w-full"
                             required autocomplete="slug" />
                         <InputError :message="form.errors.slug" class="mt-2" />
+                    </div>
+
+                    <div class="mt-4">
+                        <InputLabel for="meta_description" value="Meta description" />
+
+                        <AppTexArea id="meta_description" v-model="form.meta_description" type="text" class="mt-1 block w-full" 
+                            autocomplete="meta_description"></AppTexArea>
+
+                        <InputError :message="form.errors.meta_description" class="mt-2" />
+
+                    </div>
+
+                    <div class="mt-4">
+                        <InputLabel for="keywords" value="Keywords" />
+
+                        <AppTexArea id="Keywords" v-model="form.keywords" type="text" class="mt-1 block w-full"
+                            autocomplete="keywords"></AppTexArea>
+
+                        <InputError :message="form.errors.keywords" class="mt-2" />
+
                     </div>
 
                     <div class="mt-4">
