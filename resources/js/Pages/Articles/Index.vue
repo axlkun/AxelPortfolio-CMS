@@ -17,6 +17,7 @@ const headers = [
     { name: "Title" },
     { name: "Categories" },
     { name: "Created date" },
+    { name: "Last update" },
     {
         name: "Actions",
         class: "text-right"
@@ -49,7 +50,8 @@ const formatCategories = (categories) => {
                     <tr v-for="article in articles.data" :key="article.id">
                         <td>{{ article.title }}</td>
                         <td>{{formatCategories(article.categories)}}</td>
-                        <td>{{ article.created_at_formated }}</td>
+                        <td>{{ article.created_date }}</td>
+                        <td>{{ article.updated_date }}</td>
                         <td>
                             <div class="flex items-center justify-end space-x-2">
                                 <EditBtn :url="route('articles.edit', { article: article.id })"></EditBtn>
