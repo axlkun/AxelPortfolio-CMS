@@ -40,7 +40,10 @@ class ArticlesController extends Controller
             'title' => ['required', 'string', 'max:255'],
             'slug' => ['required', 'string', Rule::unique(Article::class)],
             'image' => ['required', 'image', 'max:3000'],
+            'alt_image' => ['nullable','string','max:255'],
             'summary' => ['required', 'string','max:255'],
+            'meta_description' => ['nullable','string', 'max:255'],
+            'keywords' => ['nullable','string', 'max:255'],
             'description' => ['required', 'string'],
         ]);
 
@@ -77,7 +80,10 @@ class ArticlesController extends Controller
             'title' => ['required', 'string', 'max:255'],
             'slug' => ['required', 'string', Rule::unique(Article::class)->ignore($article->id)],
             'image' => ['nullable', 'image', 'max:3000'],
+            'alt_image' => ['nullable','string','max:255'],
             'summary' => ['required', 'string','max:255'],
+            'meta_description' => ['nullable','string', 'max:255'],
+            'keywords' => ['nullable','string', 'max:255'],
             'description' => ['required', 'string'],
         ]);
 
