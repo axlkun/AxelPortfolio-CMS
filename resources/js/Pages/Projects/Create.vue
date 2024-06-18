@@ -31,7 +31,8 @@ const form = useForm({
     repo_link: "",
     website_link: "",
     summary: "",
-    description: ""
+    description: "",
+    status: null
 });
 
 let imageUrl = ref("");
@@ -63,6 +64,7 @@ onMounted(() => {
         form.website_link = props.project.data.website_link;
         form.summary = props.project.data.summary;
         form.description = props.project.data.description;
+        form.status = props.project.data.status === 1;
     }
 
     imageUrl.value = props.project.data.imageUrl;
@@ -98,6 +100,12 @@ const saveProject = () => {
                         <TextInput id="title" v-model="form.title" type="text" class="mt-1 block w-full" required
                             autocomplete="title" />
                         <InputError :message="form.errors.title" class="mt-2" />
+                    </div>
+
+                    <div class="mt-4">
+                        <InputLabel for="status" value="Status" />
+                        <input id="status" type="checkbox" v-model="form.status" class="mt-1" />
+                        <InputError :message="form.errors.status" class="mt-2" />
                     </div>
 
                     <div class="mt-4">
