@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ProjectResource;
+use App\Http\Resources\ProjectResourceIndex;
 use App\Models\Project;
 use Illuminate\Http\Request;
 
@@ -13,15 +14,15 @@ class ProjectsController extends Controller
     {
 
         $limit = $request->get('limit');
-        $projects = Project::latest();
+        $projectsQuery = Project::latest()->where('status', true);
 
         if ($limit) {
-            $projects = $projects->simplePaginate($limit);
+            $projects = $projectsQuery->simplePaginate($limit);
         } else {
-            $projects = $projects->get();
+            $projects = $projectsQuery->get();
         }
 
-        return ProjectResource::collection($projects);
+        return ProjectResourceIndex::collection($projects);
     }
 
     public function show(Request $request, Project $project)
@@ -35,6 +36,7 @@ class ProjectsController extends Controller
 
         $projects = Project::latest()
             ->where('slug', '!=', $slug)
+            ->where('status', true)
             ->simplePaginate(3);
 
         return ProjectResource::collection($projects);

@@ -7,13 +7,14 @@ use App\Http\Resources\ArticleResource;
 use App\Models\Article;
 use Illuminate\Http\Request;
 use App\Actions\UploadFile;
+use App\Http\Resources\ArticleResourceIndex;
 
 class ArticlesController extends Controller
 {
     public function index(Request $request){
         $articles = Article::with(['categories'])->latest()->simplePaginate($request->get('limit',10));
 
-        return ArticleResource::collection($articles);
+        return ArticleResourceIndex::collection($articles);
     }
 
     public function show(Article $article){
@@ -29,7 +30,7 @@ class ArticlesController extends Controller
             ->where('slug', '!=', $slug)
             ->simplePaginate(3);
 
-        return ArticleResource::collection($articles);
+        return ArticleResourceIndex::collection($articles);
     }
 
     public function storeImage(Request $request, UploadFile $uploadFile){
