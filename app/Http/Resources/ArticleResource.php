@@ -20,6 +20,7 @@ class ArticleResource extends JsonResource
             'id' => $this->id,
             'imageUrl' => $this->getImageUrl(),
             'alt_image' => $this->when($this->alt_image,$this->alt_image),
+            'seccion' => $this->when($this->seccion,$this->seccion),
             'title' => $this->title,
             'categories' => CategoryResource::collection($this->whenLoaded('categories')),
             'slug' => $this->when($this->slug,$this->slug),

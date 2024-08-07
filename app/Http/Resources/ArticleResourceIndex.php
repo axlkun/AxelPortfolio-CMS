@@ -20,6 +20,7 @@ class ArticleResourceIndex extends JsonResource
             'id' => $this->id,
             'imageUrl' => $this->getImageUrl(),
             'title' => $this->title,
+            'seccion' => $this->when($this->seccion,$this->seccion),
             'categories' => CategoryResource::collection($this->whenLoaded('categories')),
             'slug' => $this->when($this->slug,$this->slug),
             'summary' => $this->when($this->summary,$this->summary),

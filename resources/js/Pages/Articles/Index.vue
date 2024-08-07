@@ -15,6 +15,7 @@ const props = defineProps({
 
 const headers = [
     { name: "Title" },
+    { name: "Section" },
     { name: "Categories" },
     { name: "Created date" },
     { name: "Last update" },
@@ -49,6 +50,7 @@ const formatCategories = (categories) => {
                 <AppTable :headers="headers" :items="articles">
                     <tr v-for="article in articles.data" :key="article.id">
                         <td>{{ article.title }}</td>
+                        <td>{{ article.seccion }}</td>
                         <td>{{formatCategories(article.categories)}}</td>
                         <td>{{ article.created_date }}</td>
                         <td>{{ article.updated_date }}</td>

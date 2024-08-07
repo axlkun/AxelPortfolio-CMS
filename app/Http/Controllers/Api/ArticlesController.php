@@ -17,6 +17,28 @@ class ArticlesController extends Controller
         return ArticleResourceIndex::collection($articles);
     }
 
+    public function filteredIndex(Request $request)
+    {
+        // Obtener los parámetros de la solicitud
+        $seccion = $request->query('seccion'); // El parámetro de sección
+        $limit = $request->query('limit', 10); // El límite, con un valor por defecto de 10
+
+        // Validar el parámetro de sección
+        if (is_null($seccion)) {
+            return response()->json(['error' => 'El parámetro "seccion" es requerido.'], 400);
+        }
+
+        // Filtrar los artículos por la sección y aplicar el límite
+        $articles = Article::with('categories')
+            ->where('seccion', $seccion)
+            ->latest()
+            ->limit($limit) // Aplicar el límite de resultados
+            ->get(); // Obtener los resultados
+
+        // Retornar la colección de artículos
+        return ArticleResourceIndex::collection($articles);
+    }
+
     public function show(Article $article){
         $article->load(['categories:name']);
         return new ArticleResource($article);

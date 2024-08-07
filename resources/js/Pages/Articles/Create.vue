@@ -33,6 +33,7 @@ const form = useForm({
     "_method": props.edit ? 'PUT' : "",
     categories: [],
     title: "",
+    seccion: "",
     alt_image: null,
     slug: "",
     summary: "",
@@ -65,6 +66,7 @@ onMounted(() => {
     if (props.edit) {
         form.categories = props.article.data.categories.map(category => category.id);
         form.title = props.article.data.title;
+        form.seccion = props.article.data.seccion;
         form.alt_image = props.article.data.alt_image;
         form.slug = props.article.data.slug;
         form.summary = props.article.data.summary;
@@ -115,6 +117,16 @@ const saveArticle = () => {
                             optionValue="id" placeholder="Select categories" :maxSelectedLabels="5"
                             class="w-full md:w-20rem" />
                         <InputError :message="form.errors.category" class="mt-2" />
+                    </div>
+
+                    <div class="mt-4">
+                        <InputLabel for="seccion" value="Section" />
+                        <select id="seccion" v-model="form.seccion" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50 focus:border-blue-500">
+                            <option value="programacion">Programación</option>
+                            <option value="ingenieria">Ingeniería</option>
+                            <option value="startup">Startup</option>
+                        </select>
+                        <InputError :message="form.errors.seccion" class="mt-2" />
                     </div>
 
                     <div class="mt-4">

@@ -37,6 +37,7 @@ class ArticlesController extends Controller
 
         $data = $request->validate([
             'categories' => ['required', 'array'],
+            'seccion' => ['nullable','string','max:255'],
             'title' => ['required', 'string', 'max:255'],
             'slug' => ['required', 'string', Rule::unique(Article::class)],
             'image' => ['required', 'image', 'max:3000'],
@@ -77,6 +78,7 @@ class ArticlesController extends Controller
 
         $data = $request->validate([
             'categories' => ['required', 'array'],
+            'seccion' => ['nullable','string','max:255'],
             'title' => ['required', 'string', 'max:255'],
             'slug' => ['required', 'string', Rule::unique(Article::class)->ignore($article->id)],
             'image' => ['nullable', 'image', 'max:3000'],
