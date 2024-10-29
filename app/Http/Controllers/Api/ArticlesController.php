@@ -68,4 +68,30 @@ class ArticlesController extends Controller
 
         }
     }
+
+    public function search(Request $request)
+    {
+    // Obtener el parámetro de búsqueda desde la solicitud
+    $query = $request->query('query');
+
+    // Validar que el parámetro no esté vacío
+    if (empty($query)) {
+        return response()->json(['error' => 'El parámetro "query" es requerido.'], 400);
+    }
+
+    // Realizar la búsqueda en los campos especificados y evitar duplicados
+    $articles = Article::with('categories')
+        ->where(function($q) use ($query) {
+            $q->where('title', 'LIKE', "%{$query}%")
+              ->orWhere('summary', 'LIKE', "%{$query}%")
+              ->orWhere('meta_description', 'LIKE', "%{$query}%")
+              ->orWhere('keywords', 'LIKE', "%{$query}%");
+        })
+        ->distinct() // Evitar duplicados
+        ->latest()   // Ordenar por los más recientes
+        ->paginate(15); // Paginación para la respuesta
+
+    // Retornar los artículos encontrados
+    return ArticleResourceIndex::collection($articles);
+    }
 }

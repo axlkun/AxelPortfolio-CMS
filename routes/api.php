@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('articles',[ArticlesController::class,'index']);
 Route::get('articles/filter', [ArticlesController::class, 'filteredIndex']);
+Route::get('articles/search',[ArticlesController::class,'search']);
 Route::get('articles/{article:slug}',[ArticlesController::class,'show']);
 Route::get('related-articles/{article:slug}',[ArticlesController::class,'relatedArticles']);
 Route::post('image-upload',[ArticlesController::class,'storeImage']);
